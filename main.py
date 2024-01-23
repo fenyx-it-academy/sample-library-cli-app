@@ -7,6 +7,11 @@ console = Console()
 
 app = typer.Typer()
 
+#Here i define two lists for books and useres(milad)
+
+books = []
+users = []
+
 @app.command("start")
 def start():
     typer.secho(f'''Welcome to Library CLI!\n\n
@@ -18,6 +23,23 @@ def start():
 def sign_up(username: str):
     typer.echo(f"Nice that you are signing up!")
     # TODO: Add user with name {username} to database table
+
+
+# This is how you can get arguments, here username is a mandatory argument for this command.
+@app.command("sign_in")
+def sign_in(username: str, password: str):
+    """Sign in a user."""
+    for user in users:
+        if user["username"] == username and user["password"] == password:
+            typer.echo(f"User {username} successfully signed in!")
+            return
+    typer.echo("Error: Incorrect username or password.")
+
+@app.command("search_by_name")
+def search_by_name(book_name: str):
+    """Search for books by name."""
+    # TODO: Implement book search logic by name
+
 
 # Example function for tables, you can add more columns/row.
 @app.command("display_table")
