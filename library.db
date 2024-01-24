@@ -35,7 +35,8 @@ CREATE TABLE `user` (
 CREATE TABLE `order` (
 	`id` INTEGER PRIMARY KEY AUTOINCREMENT,
 	`user_id` INT NOT NULL,
-	`book_id` INT NOT NULL
+	`book_id` INT NOT NULL,
+	`favorite` BOOLEAN NOT NULL
 	
 );
 
